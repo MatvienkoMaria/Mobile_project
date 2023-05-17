@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="&lt;"
+            android:textColor="@color/dark_days"
+            android:background="@null"
+            android:textStyle="bold"
+            android:onClick="previousMonthAction"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/monthYear"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Май 2023"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/dark_days"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="г."
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:textColor="@color/dark_days"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="&gt;"
+            android:textColor="@color/dark_days"
+            android:background="@null"
+            android:textStyle="bold"
+            android:onClick="nextMonthAction"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ПН"
+            android:textColor="@color/gray_days"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ВТ"
+            android:textColor="@color/gray_days"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="СР"
+            android:textColor="@color/gray_days"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ЧТ"
+            android:textColor="@color/gray_days"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ПТ"
+            android:textColor="@color/gray_days"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="СБ"
+            android:textColor="@color/gray_days"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ВС"
+            android:textColor="@color/gray_days"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="331dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendarRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="7"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
