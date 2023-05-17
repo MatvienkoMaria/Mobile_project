@@ -5,15 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="right">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Расписание"
+                    android:textSize="20sp"
+                    android:textColor="@color/dark_days"
+                    android:layout_weight="1"
+                    />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="14" />
+
+                <ImageButton
+                    android:layout_width="1dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:background="@drawable/menu_bar_black"
+                    android:contentDescription="menu"
+                    android:onClick="toControllingAction"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="left"
         >
+
+        <TextView
+            android:id="@+id/monthYear"
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="wrap_content"
+            android:text="Май 2023"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="@color/dark_days"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="wrap_content"
+            android:text="г."
+            android:textSize="20sp"
+            android:textAlignment="textStart"
+            android:textColor="@color/dark_days"
+            />
 
         <Button
             android:layout_width="0dp"
@@ -27,27 +102,6 @@
             android:textSize="20sp"
             />
 
-        <TextView
-            android:id="@+id/monthYear"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
-            android:text="Май 2023"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:textColor="@color/dark_days"
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
-            android:text="г."
-            android:textSize="20sp"
-            android:textAlignment="textStart"
-            android:textColor="@color/dark_days"
-            />
-
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +112,7 @@
             android:textStyle="bold"
             android:onClick="nextMonthAction"
             android:textSize="20sp" />
+
     </LinearLayout>
 
     <LinearLayout
