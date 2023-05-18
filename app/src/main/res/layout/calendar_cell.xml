@@ -22,7 +22,7 @@
             android:id="@+id/cellDayText"
             android:text="1"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_days"
             app:flow_horizontalAlign="center"
             app:flow_verticalAlign="center"
             android:gravity="center"
