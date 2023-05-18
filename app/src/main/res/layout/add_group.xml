@@ -76,20 +76,8 @@
             android:background="@drawable/group_cell_border"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="75dp"
-            android:layout_marginRight="75dp">
-
-            <TextView
-                android:id="@+id/textSelectedGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Выберите группу"
-                android:textAlignment="textStart"
-                android:textColor="@color/gray_days"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp">
 
             <Spinner
                 android:id="@+id/spinner"
@@ -97,10 +85,25 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="@+id/textSelectedGroup"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:background="@drawable/group_add_background"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:text="Добавить"
+            android:textSize="20sp"
+            android:textColor="@color/purple_background"
+            android:onClick="addGroup"/>
 
     </LinearLayout>
 

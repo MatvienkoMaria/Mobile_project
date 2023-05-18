@@ -20,7 +20,6 @@ public class AddGroupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_group);
 
-        TextView textSelectedGroup = findViewById(R.id.textSelectedGroup);
         Spinner spinner = findViewById(R.id.spinner);
         //Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, groups);
@@ -34,8 +33,8 @@ public class AddGroupActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 // Получаем выбранный объект
-                String item = (String)parent.getItemAtPosition(position);
-                textSelectedGroup.setText(item);
+                //String item = (String)parent.getItemAtPosition(position);
+                //textSelectedGroup.setText(item);
             }
 
             @Override
@@ -47,5 +46,7 @@ public class AddGroupActivity extends AppCompatActivity {
 
     public void backToCalendarFromAddGroup(View view) {
         onBackPressed();
+    }
+    public void addGroup(View view) {
     }
 }
