@@ -139,8 +139,8 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         void changeMonthByCell(int prevOrNext, int day_cell);
     }
 
-    //@Override
-    //public void onBackPressed() {
-    //    super.onBackPressed();
-    //}
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

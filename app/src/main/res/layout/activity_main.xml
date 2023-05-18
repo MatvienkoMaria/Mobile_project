@@ -43,8 +43,8 @@
                     android:layout_weight="14" />
 
                 <ImageButton
-                    android:layout_width="1dp"
-                    android:layout_height="20dp"
+                    android:layout_width="2dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2"
                     android:background="@drawable/menu_bar_black"

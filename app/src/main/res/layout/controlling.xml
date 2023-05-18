@@ -60,7 +60,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:onClick="toAddGroupAction">
 
             <ImageView
                 android:layout_width="60dp"
@@ -99,6 +100,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
+        android:onClick="backToCalendarFromControlling"
         >
 
         <ImageView
