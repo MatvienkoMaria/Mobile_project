@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
+    android:background="@color/purple_background"
     >
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,7 +18,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" >
+            android:background="?attr/colorPrimary"
+            android:backgroundTint="@color/purple_topLine">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,7 +74,7 @@
         <TextView
             android:id="@+id/monthYear"
             android:layout_width="0dp"
-            android:layout_weight="7"
+            android:layout_weight="6"
             android:layout_height="wrap_content"
             android:text="Май 2023"
             android:textSize="20sp"
@@ -82,7 +84,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="7"
+            android:layout_weight="6"
             android:layout_height="wrap_content"
             android:text="г."
             android:textSize="20sp"
@@ -93,7 +95,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="&lt;"
             android:textColor="@color/dark_days"
             android:background="@null"
@@ -105,7 +107,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="&gt;"
             android:textColor="@color/dark_days"
             android:background="@null"

@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="purple_background">#EDECF7</color>
+    <color name="purple_backgroundForControlling">#EAE8FE</color>
     <color name="purple_topLine">#E2DFFE</color>
     <color name="purple_dayChosen">#D8C4FA</color>
     <color name="purple_backClass">#D6D4E5</color>
