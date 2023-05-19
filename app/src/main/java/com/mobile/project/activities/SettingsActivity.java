@@ -1,9 +1,11 @@
-package com.mobile.project;
+package com.mobile.project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+
+import com.mobile.project.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

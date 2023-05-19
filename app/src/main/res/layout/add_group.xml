@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="bottom"
-    tools:context=".AddGroupActivity"
+    tools:context=".activities.AddGroupActivity"
     android:background="@color/purple_backgroundForControlling">
 
     <LinearLayout
@@ -91,6 +91,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:id="@+id/textAddGroup"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_gravity="center_horizontal"

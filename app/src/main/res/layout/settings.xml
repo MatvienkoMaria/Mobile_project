@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="bottom"
-    tools:context=".SettingsActivity"
+    tools:context=".activities.SettingsActivity"
     android:background="@color/purple_backgroundForControlling">
 
     <LinearLayout

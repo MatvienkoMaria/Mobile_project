@@ -1,8 +1,6 @@
-package com.mobile.project;
+package com.mobile.project.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -10,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mobile.project.R;
+import com.mobile.project.activities.CalendarAdapter;
+import com.mobile.project.activities.ControllingActivity;
 
 import java.time.LocalDate;
 import java.time.YearMonth;

@@ -1,11 +1,12 @@
-package com.mobile.project;
+package com.mobile.project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.mobile.project.R;
 
 public class ControllingActivity extends AppCompatActivity {
 
