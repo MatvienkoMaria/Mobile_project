@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.mobile.project.AllGroups;
 import com.mobile.project.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllingActivity extends AppCompatActivity implements GroupAdapter.OnItemGroupListener{
@@ -29,8 +30,9 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
         groupRecyclerView = findViewById(R.id.groupRecyclerView);
     }
     private void setGroupView(){
-        List<String> displayedGroups = allGroups.displayedGroupsList;
-        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this);
+        List<String> displayedGroups = new ArrayList<>(allGroups.displayedGroupsList);
+        String lastAddedGroup = allGroups.lastAddedGroup;
+        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, lastAddedGroup);
         groupRecyclerView.setAdapter(groupAdapter);
     }
 

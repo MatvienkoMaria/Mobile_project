@@ -16,12 +16,15 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     public final List<String> displayedGroups;
     private LayoutInflater inflater;
     private final OnItemGroupListener onItemGroupListener;
+    private final String lastAddedGroup;
+    private View pos_cell;
+    private View last_pos_cell;
 
-
-    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener) {
+    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, String lastAddedGroup) {
         this.displayedGroups = displayedGroups;
         inflater = LayoutInflater.from(context);
         this.onItemGroupListener = onItemGroupListener;
+        this.lastAddedGroup = lastAddedGroup;
     }
 
     @NonNull
@@ -35,8 +38,14 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     public void onBindViewHolder(@NonNull GroupViewHolder holder, int position) {
         if (!displayedGroups.isEmpty()) {
             holder.groupName.setText(displayedGroups.get(position));
-
+            visibilityOfCheckChosenGroup(holder);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                visibilityOfCheckChosenGroup(holder);
+            }
+        });
     }
 
     @Override
@@ -45,5 +54,12 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     }
     public interface OnItemGroupListener{
         void onItemClick(int position, String groupName);
+    }
+    private void visibilityOfCheckChosenGroup(@NonNull GroupViewHolder holder){
+        if (pos_cell != null) {
+            pos_cell.findViewById(R.id.checkGroup).setVisibility(View.VISIBLE);
+        }
+        holder.view_cell_group_layout.findViewById(R.id.checkGroup).setVisibility(View.INVISIBLE);
+        pos_cell = holder.view_cell_group_layout.findViewById(R.id.checkGroup);
     }
 }
