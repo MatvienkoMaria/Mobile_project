@@ -22,7 +22,7 @@ public class AllGroups {
         return instance;
     }
     public List<String> testStringGroups = new ArrayList<>();          //TEST
-    public String lastAddedGroup;//TEST
+    public String lastAddedGroup;                                      //TEST
     public List<String> displayedGroupsList = new ArrayList<>();         //TEST
     private List<Group> groups;
     public AllGroups() {
