@@ -7,14 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.project.AllGroups;
 import com.mobile.project.R;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AddGroupActivity extends AppCompatActivity {
     private AllGroups allGroups =  AllGroups.getInstance();
@@ -26,7 +22,7 @@ public class AddGroupActivity extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.spinner);
         //Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, allGroups.allGroupsList);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, allGroups.testStringGroups);
         //Определяем разметку для использования при выборе элемента
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Применяем адаптер к элементу spinner
