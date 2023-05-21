@@ -32,7 +32,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
     private void setGroupView(){
         List<String> displayedGroups = new ArrayList<>(allGroups.displayedGroupsList);
         String lastAddedGroup = allGroups.lastAddedGroup;
-        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, lastAddedGroup);
+        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this);
         groupRecyclerView.setAdapter(groupAdapter);
     }
 
