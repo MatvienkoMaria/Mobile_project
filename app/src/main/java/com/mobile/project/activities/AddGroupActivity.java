@@ -22,7 +22,7 @@ public class AddGroupActivity extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.spinner);
         //Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, allGroups.testStringGroups);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, allGroups.allGroupsList);
         //Определяем разметку для использования при выборе элемента
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Применяем адаптер к элементу spinner
