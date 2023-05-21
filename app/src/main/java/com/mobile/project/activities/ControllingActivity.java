@@ -1,19 +1,37 @@
 package com.mobile.project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.mobile.project.AllGroups;
 import com.mobile.project.R;
 
-public class ControllingActivity extends AppCompatActivity {
+import java.util.List;
+
+public class ControllingActivity extends AppCompatActivity implements GroupAdapter.OnItemGroupListener{
+    private RecyclerView groupRecyclerView;
+    private AllGroups allGroups =  AllGroups.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.controlling);
+        initWidgets();
+        setGroupView();
+    }
+    private void initWidgets()
+    {
+        groupRecyclerView = findViewById(R.id.groupRecyclerView);
+    }
+    private void setGroupView(){
+        List<String> displayedGroups = allGroups.displayedGroupsList;
+        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this);
+        groupRecyclerView.setAdapter(groupAdapter);
     }
 
     public void toSettingsAction(View view) {
@@ -30,5 +48,14 @@ public class ControllingActivity extends AppCompatActivity {
 
     public void backToCalendarFromControlling(View view) {
         onBackPressed();
+    }
+
+    @Override
+    public void onItemClick(int position, String groupName) {
+        if(!groupName.equals(""))
+        {
+            String message = "Selected Group " + groupName + ".";
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
     }
 }
