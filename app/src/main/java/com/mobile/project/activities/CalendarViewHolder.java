@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.project.R;
-import com.mobile.project.activities.CalendarAdapter;
 
 public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     public final TextView dayOfMonth;

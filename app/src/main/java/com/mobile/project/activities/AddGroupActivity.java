@@ -16,7 +16,7 @@ import com.mobile.project.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class AddGroupActivity extends AppCompatActivity {
+public class  AddGroupActivity extends AppCompatActivity {
     private AllGroups allGroups =  AllGroups.getInstance();
     private String chosenItemText;
     @Override
