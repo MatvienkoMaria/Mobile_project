@@ -10,7 +10,6 @@ public class AllGroups {
     private static AllGroups instance = new AllGroups();
     public List<String> allGroupsList = new ArrayList<>();
     public LinkedHashSet<String> displayedGroupsList = new LinkedHashSet<>();
-    public String lastAddedGroup;
 
     public AllGroups() {
         allGroupsList.add("РЛ-221");

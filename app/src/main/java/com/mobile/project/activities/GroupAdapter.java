@@ -16,15 +16,12 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     public final List<String> displayedGroups;
     private LayoutInflater inflater;
     private final OnItemGroupListener onItemGroupListener;
-    private final String lastAddedGroup;
     private View pos_cell;
-    private View last_pos_cell;
 
-    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, String lastAddedGroup) {
+    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener) {
         this.displayedGroups = displayedGroups;
         inflater = LayoutInflater.from(context);
         this.onItemGroupListener = onItemGroupListener;
-        this.lastAddedGroup = lastAddedGroup;
     }
 
     @NonNull

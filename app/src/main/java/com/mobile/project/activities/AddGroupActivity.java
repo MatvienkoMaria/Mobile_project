@@ -49,7 +49,6 @@ public class AddGroupActivity extends AppCompatActivity {
     }
     public void addGroup(View view) {
         allGroups.displayedGroupsList.add(chosenItemText);
-        allGroups.lastAddedGroup = chosenItemText;
         String message = "Группа " + chosenItemText + " добавлена.";
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         finish();
