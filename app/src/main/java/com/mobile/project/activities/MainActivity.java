@@ -10,20 +10,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.project.R;
-import com.mobile.project.activities.CalendarAdapter;
-import com.mobile.project.activities.ControllingActivity;
+import com.mobile.project.adapters.CalendarAdapter;
+import com.mobile.project.adapters.LessonAdapter;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
+    private RecyclerView lessonsRecyclerview;
     private LocalDate selectedDate;
-    private ChangeMonthByCell changeMonthByCell = new ChangeMonthByCell() {
+    private final ChangeMonthByCell changeMonthByCell = new ChangeMonthByCell() {
         @Override
         public void changeMonthByCell(int prevOrNext, int day_cell) {
             if (prevOrNext == 0){
@@ -49,18 +51,35 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     private void initWidgets()
     {
+        lessonsRecyclerview = findViewById(R.id.lessonsRecyclerView);
         calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
         monthYearText = findViewById(R.id.monthYear);
     }
 
     private void setMonthView(int day_cell)
     {
+        // надо будет переработать для нажатия на день, это чисто проверка отображения предметов
+        List<String> lessons = new ArrayList<>();
+        lessons.add("Какой-то предмет 1");
+        lessons.add("Какой-то предмет 2");
+        List<String> teachers = new ArrayList<>();
+        teachers.add("Биба Б.Б.");
+        teachers.add("Боба Б.Б.");
+        List<String> timeStart = new ArrayList<>();
+        timeStart.add("10:30");
+        timeStart.add("12:40");
+        List<String> timeEnd = new ArrayList<>();
+        timeEnd.add("11:50");
+        timeEnd.add("14:00");
+        List<String> typeLesson = new ArrayList<>();
+        typeLesson.add("лк");
+        typeLesson.add("пр");
+        LessonAdapter lessonAdapter = new LessonAdapter(lessons, teachers, timeStart, timeEnd,typeLesson,this);
+        lessonsRecyclerview.setAdapter(lessonAdapter);
+        // это календарик и месяц, не трогать
         monthYearText.setText(monthYearFromDate(selectedDate));
         ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
-
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this, this, changeMonthByCell, day_cell);
-        //RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
-        //calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
     }
 

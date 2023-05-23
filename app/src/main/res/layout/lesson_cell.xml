@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:background="@drawable/lesson_cell_background"
-    android:layout_margin="10dp">
+    android:layout_margin="5dp">
 
     <LinearLayout
         android:id="@+id/layout_time"
@@ -15,7 +15,8 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/timeStart"
@@ -23,8 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="10:30"
-            android:textColor="@color/dark_days"
-            android:textSize="20sp" />
+            android:textColor="@color/gray_days"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/timeEnd"
@@ -32,21 +33,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="11:50"
-            android:textColor="@color/dark_days"
-            android:textSize="20sp" />
+            android:textColor="@color/gray_days"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_lesson"
-        android:layout_width="285dp"
+        android:layout_width="270dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/layout_time"
         app:layout_constraintTop_toTopOf="parent"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingRight="10dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/lessonText"
@@ -58,21 +60,23 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/teacher"
+            android:id="@+id/teacherText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:text="Пичугин С.С."
-            android:textColor="@color/dark_days"
-            android:textSize="20sp" />
+            android:textColor="@color/gray_days"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lection_practice_view"
-        android:layout_width="30dp"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
+        android:gravity="center_vertical"
         android:orientation="vertical"
+        android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/layout_lesson"
@@ -80,12 +84,14 @@
 
         <TextView
             android:id="@+id/lectionPracticeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:text="лк"
-            android:textColor="@color/dark_days"
-            android:textSize="20sp" />
+            android:textAlignment="center"
+            android:textColor="@color/gray_days"
+            android:textSize="16sp" />
 
     </LinearLayout>
 

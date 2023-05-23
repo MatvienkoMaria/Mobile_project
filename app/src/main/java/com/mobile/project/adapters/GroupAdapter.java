@@ -1,4 +1,4 @@
-package com.mobile.project.activities;
+package com.mobile.project.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.project.R;
+import com.mobile.project.activities.ControllingActivity;
+import com.mobile.project.holders.GroupViewHolder;
 
 import java.util.List;
 
 public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
-    public final List<String> displayedGroups;
+    private final List<String> displayedGroups;
     private LayoutInflater inflater;
     private final OnItemGroupListener onItemGroupListener;
     private View pos_cell;

@@ -190,7 +190,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="280dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendarRecyclerView"
@@ -202,8 +202,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/group_cell_view"
-        android:background="@drawable/cat_chillout">
+        android:id="@+id/group_cell_view">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lessonsRecyclerView"
@@ -211,7 +210,8 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             tools:listitem="@layout/lesson_cell"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:background="@drawable/cat_chillout"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

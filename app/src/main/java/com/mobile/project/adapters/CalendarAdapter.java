@@ -1,4 +1,4 @@
-package com.mobile.project.activities;
+package com.mobile.project.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.project.R;
+import com.mobile.project.holders.CalendarViewHolder;
+import com.mobile.project.activities.MainActivity;
 
 import java.util.ArrayList;
 
