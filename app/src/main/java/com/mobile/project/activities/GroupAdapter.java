@@ -17,13 +17,13 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     private LayoutInflater inflater;
     private final OnItemGroupListener onItemGroupListener;
     private View pos_cell;
-    private String chosenGroup;
+    private ControllingActivity.ChooseGroup chooseGroup;
 
-    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, String chosenGroup) {
+    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, ControllingActivity.ChooseGroup chooseGroup) {
         this.displayedGroups = displayedGroups;
         inflater = LayoutInflater.from(context);
         this.onItemGroupListener = onItemGroupListener;
-        this.chosenGroup = chosenGroup;
+        this.chooseGroup = chooseGroup;
     }
 
     @NonNull
@@ -60,5 +60,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
         }
         holder.view_cell_group_layout.findViewById(R.id.checkGroup).setVisibility(View.INVISIBLE);
         pos_cell = holder.view_cell_group_layout.findViewById(R.id.checkGroup);
+        String chosen = holder.groupName.getText().toString();
+        chooseGroup.chooseGroup(chosen);
     }
 }

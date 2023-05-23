@@ -66,8 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:layout_gravity="left"
         >
 
@@ -129,7 +129,7 @@
             android:text="ПН"
             android:textColor="@color/gray_days"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <TextView
             android:layout_width="0dp"
@@ -138,7 +138,7 @@
             android:text="ВТ"
             android:textColor="@color/gray_days"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <TextView
             android:layout_width="0dp"
@@ -147,7 +147,7 @@
             android:text="СР"
             android:textColor="@color/gray_days"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <TextView
             android:layout_width="0dp"
@@ -156,7 +156,7 @@
             android:text="ЧТ"
             android:textColor="@color/gray_days"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <TextView
             android:layout_width="0dp"
@@ -165,7 +165,7 @@
             android:text="ПТ"
             android:textColor="@color/gray_days"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <TextView
             android:layout_width="0dp"
@@ -174,7 +174,7 @@
             android:text="СБ"
             android:textColor="@color/gray_days"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <TextView
             android:layout_width="0dp"
@@ -183,14 +183,14 @@
             android:text="ВС"
             android:textColor="@color/gray_days"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="331dp">
+        android:layout_height="300dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendarRecyclerView"
@@ -199,7 +199,20 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="7"/>
     </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/group_cell_view"
+        android:background="@drawable/cat_chillout">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lessonsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/lesson_cell"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
