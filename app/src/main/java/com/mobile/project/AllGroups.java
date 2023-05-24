@@ -7,6 +7,7 @@ import com.mobile.project.pojo.Subject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -14,6 +15,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class AllGroups {
     private static AllGroups instance = new AllGroups();
@@ -25,14 +28,56 @@ public class AllGroups {
     public Group chosenGroup;
     private List<Group> groups;
 
-    public AllGroups() {
-        update("https://213d-212-16-19-2.ngrok-free.app/");
+    private AllGroups() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                update("https://2a30-212-16-19-2.ngrok-free.app");
+            }
+        }).start();
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    private String getContent(String path) throws IOException {
+        BufferedReader reader=null;
+        InputStream stream = null;
+        HttpsURLConnection connection = null;
+        try {
+            URL url=new URL(path);
+            connection =(HttpsURLConnection)url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setReadTimeout(10000);
+            connection.connect();
+            stream = connection.getInputStream();
+            reader= new BufferedReader(new InputStreamReader(stream));
+            StringBuilder buf=new StringBuilder();
+            String line;
+            while ((line=reader.readLine()) != null) {
+                buf.append(line).append("\n");
+            }
+            return(buf.toString());
+        }
+        finally {
+            if (reader != null) {
+                reader.close();
+            }
+            if (stream != null) {
+                stream.close();
+            }
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
     }
     private String getHTML(String urlToRead){
         StringBuilder result = new StringBuilder();
         try{
             URL url = new URL(urlToRead);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(10000);
             conn.setRequestMethod("GET");
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_16))) {
@@ -104,7 +149,12 @@ public class AllGroups {
     }
     public void update(String url){
         String jsonText = getHTML(url);
+        System.out.println(jsonText);
         groups = new Gson().fromJson(jsonText,new TypeToken<List<Group>>(){}.getType());
+        System.out.println(groups);
+        for(Group group : groups){
+            System.out.println(group.name);
+        }
         manySubjectToOne(groups);
         subjectParse(groups);
     }

@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        AllGroups x = AllGroups.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initWidgets();
