@@ -1,5 +1,6 @@
 package com.mobile.project.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,12 +21,14 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     private final OnItemGroupListener onItemGroupListener;
     private View pos_cell;
     private ControllingActivity.ChooseGroup chooseGroup;
+    private ControllingActivity.DeleteGroup deleteGroup;
 
-    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, ControllingActivity.ChooseGroup chooseGroup) {
+    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, ControllingActivity.ChooseGroup chooseGroup, ControllingActivity.DeleteGroup deleteGroup) {
         this.displayedGroups = displayedGroups;
         inflater = LayoutInflater.from(context);
         this.onItemGroupListener = onItemGroupListener;
         this.chooseGroup = chooseGroup;
+        this.deleteGroup = deleteGroup;
     }
 
     @NonNull
@@ -45,6 +48,13 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
             @Override
             public void onClick(View view) {
                 visibilityOfCheckChosenGroup(holder);
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteGroup.deleteGroup(holder.groupName.toString());
+                displayedGroups.remove(holder.groupName.toString());
             }
         });
     }
