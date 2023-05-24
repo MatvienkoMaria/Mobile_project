@@ -57,7 +57,7 @@
             android:layout_gravity="left"
             android:text="Московская система образования, ауд. 3307"
             android:textColor="@color/dark_days"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/teacherText"

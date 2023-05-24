@@ -23,7 +23,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     private View pos_cell;
     private ControllingActivity.ChooseGroup chooseGroup;
     private ControllingActivity.DeleteGroup deleteGroup;
-    private String chosenGroup = AllGroups.getInstance().chosenGroup.name;
+    private String chosenGroup;
 
     public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, ControllingActivity.ChooseGroup chooseGroup, ControllingActivity.DeleteGroup deleteGroup) {
         this.displayedGroups = displayedGroups;
@@ -44,8 +44,12 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     public void onBindViewHolder(@NonNull GroupViewHolder holder, int position) {
         if (!displayedGroups.isEmpty()) {
             holder.groupName.setText(displayedGroups.get(position));
+            if (AllGroups.getInstance().chosenGroup != null){
+                chosenGroup = AllGroups.getInstance().chosenGroup.name;
+            }
             if (Objects.equals(displayedGroups.get(position), chosenGroup)) {
-                holder.view_cell_group_layout.findViewById(R.id.checkGroup).setVisibility(View.INVISIBLE);;
+                holder.view_cell_group_layout.findViewById(R.id.checkGroup).setVisibility(View.INVISIBLE);
+                pos_cell = holder.view_cell_group_layout.findViewById(R.id.checkGroup);
             }
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
