@@ -21,9 +21,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
     private final DeleteGroup deleteGroup = new DeleteGroup() {
         @Override
         public void deleteGroup(String chosenGroup) {
-            groupRecyclerView.findViewById(R.id.group_cell_view).setVisibility(View.GONE);
-            String group = groupRecyclerView.findViewById(R.id.group_cell_view).findViewById(R.id.cellGroupText).toString();
-            allGroups.displayedGroupsList.remove(group);
+            allGroups.displayedGroupsList.remove(chosenGroup);
         }
     };
 
