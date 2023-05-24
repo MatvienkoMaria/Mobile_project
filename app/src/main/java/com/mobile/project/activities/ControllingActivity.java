@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.mobile.project.AllGroups;
 import com.mobile.project.R;
 import com.mobile.project.adapters.GroupAdapter;
+import com.mobile.project.pojo.Group;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +19,15 @@ import java.util.List;
 public class ControllingActivity extends AppCompatActivity implements GroupAdapter.OnItemGroupListener{
     private RecyclerView groupRecyclerView;
     private AllGroups allGroups =  AllGroups.getInstance();
+    private final List<Group> allGroupsList = AllGroups.getInstance().getGroups();
     private final DeleteGroup deleteGroup = new DeleteGroup() {
         @Override
-        public void deleteGroup(String chosenGroup) {
-            allGroups.displayedGroupsList.remove(chosenGroup);
+        public void deleteGroup(String deletedGroup) {
+            for (int i = 0; i < allGroups.displayedGroupsList.size(); i++){
+                if (allGroups.displayedGroupsList.get(i).name.equals(deletedGroup)){
+                    allGroups.displayedGroupsList.remove(i);
+                }
+            }
         }
     };
 
@@ -37,14 +43,21 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
         groupRecyclerView = findViewById(R.id.groupRecyclerView);
     }
     private void setGroupView(){
-        List<String> displayedGroups = new ArrayList<>(allGroups.displayedGroupsList);
+        List<String> displayedGroups = new ArrayList<>();
+        for (Group group : allGroupsList){
+            displayedGroups.add(group.name);
+        }
         GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, chooseGroup, deleteGroup);
         groupRecyclerView.setAdapter(groupAdapter);
     }
     private ChooseGroup chooseGroup = new ChooseGroup() {
         @Override
         public void chooseGroup(String chosenGroup) {
-            allGroups.chosenGroup = chosenGroup;
+            for (Group group : allGroupsList){
+                if (group.name.equals(chosenGroup)){
+                    allGroups.chosenGroup = group;
+                }
+            }
         }
     };
 
@@ -52,7 +65,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
         void chooseGroup(String chosenGroup);
     }
     public interface DeleteGroup{
-        void deleteGroup(String chosenGroup);
+        void deleteGroup(String deletedGroup);
     }
 
     public void toSettingsAction(View view) {

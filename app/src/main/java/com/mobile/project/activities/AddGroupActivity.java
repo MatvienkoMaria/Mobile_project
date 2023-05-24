@@ -11,18 +11,28 @@ import android.widget.Toast;
 
 import com.mobile.project.AllGroups;
 import com.mobile.project.R;
+import com.mobile.project.pojo.Group;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddGroupActivity extends AppCompatActivity {
     private AllGroups allGroups =  AllGroups.getInstance();
     private String chosenItemText;
+    private  List<Group> allGroupsList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_group);
 
         Spinner spinner = findViewById(R.id.spinner);
+        allGroupsList = AllGroups.getInstance().getGroups();
+        List<String> namesOfGroups = new ArrayList<>();
+        for (Group group : allGroupsList){
+            namesOfGroups.add(group.name);
+        }
         //Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, allGroups.allGroupsList);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, namesOfGroups);
         //Определяем разметку для использования при выборе элемента
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Применяем адаптер к элементу spinner
@@ -34,7 +44,6 @@ public class AddGroupActivity extends AppCompatActivity {
 
                 // Получаем выбранный объект
                 chosenItemText = (String)parent.getItemAtPosition(position);
-                //textSelectedGroup.setText(item);
             }
 
             @Override
@@ -48,8 +57,11 @@ public class AddGroupActivity extends AppCompatActivity {
         onBackPressed();
     }
     public void addGroup(View view) {
-        allGroups.displayedGroupsList.add(chosenItemText);
-        allGroups.chosenGroup = chosenItemText;
+        for (Group group: allGroupsList){
+            if (group.name.equals(chosenItemText) && !allGroups.displayedGroupsList.contains(group)){
+                allGroups.displayedGroupsList.add(group);
+            }
+        }
         String message = "Группа " + chosenItemText + " добавлена.";
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         finish();

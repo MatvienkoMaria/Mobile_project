@@ -12,7 +12,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -22,15 +21,12 @@ public class AllGroups {
         return instance;
     }
     Logger log = Logger.getLogger(AllGroups.class.getName());
-    public List<String> allGroupsList = new ArrayList<>();                     //TEST
-    public LinkedHashSet<String> displayedGroupsList = new LinkedHashSet<>();     //TEST
-    public String chosenGroup;                                                  //TEST
+    public List<Group> displayedGroupsList = new ArrayList<>();
+    public Group chosenGroup;
     private List<Group> groups;
 
     public AllGroups() {
-        allGroupsList.add("РЛ-221");
-        allGroupsList.add("РЛ-222");
-        update("");
+        update("https://213d-212-16-19-2.ngrok-free.app/");
     }
     private String getHTML(String urlToRead){
         StringBuilder result = new StringBuilder();
@@ -98,7 +94,7 @@ public class AllGroups {
                         date.add(splitted[i]);
                     }
                 }
-                subject.date = date;
+                subject.daysMonth = date;
                 subject.room = splitted[splitted.length-1];
                 String[] splittedTime = subject.time.split(" ");
                 subject.timeStart = splittedTime[0];

@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobile.project.AllGroups;
 import com.mobile.project.R;
 import com.mobile.project.adapters.CalendarAdapter;
 import com.mobile.project.adapters.LessonAdapter;
+import com.mobile.project.pojo.Group;
 import com.mobile.project.pojo.Subject;
 
 import java.time.LocalDate;
@@ -142,9 +144,16 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         else {
             dayMonth = dayText+"."+String.valueOf(selectedDate.getMonthValue());
         }
+        Group chosenGroup = AllGroups.getInstance().chosenGroup;
         List<Subject> subjects = new ArrayList<>();
-        subjects.add(new Subject("Какой-то предмет 1","Биба Б.Б.","10:30","11:50","24.05","лк",null));
-        subjects.add(new Subject("Какой-то предмет 2","Бoба Б.Б.","12:40","14:00","24.05","пр",null));
+        for (Subject subject: chosenGroup.subjects){
+            if (subject.daysMonth.contains(dayMonth)){
+                subjects.add(subject);
+            }
+        }
+        //List<Subject> subjects = new ArrayList<>();
+        //subjects.add(new Subject("Какой-то предмет 1","Биба Б.Б.","10:30","11:50","24.05","лк",null));
+        //subjects.add(new Subject("Какой-то предмет 2","Бoба Б.Б.","12:40","14:00","24.05","пр",null));
         LessonAdapter lessonAdapter = new LessonAdapter(subjects, this);
         lessonsRecyclerview.setAdapter(lessonAdapter);
     }
