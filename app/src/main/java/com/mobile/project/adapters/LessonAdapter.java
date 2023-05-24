@@ -38,8 +38,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonViewHolder> {
             holder.teacherName.setText(subjects.get(position).teacher);
             holder.timeStart.setText(subjects.get(position).timeStart);
             holder.timeEnd.setText(subjects.get(position).timeEnd);
-            holder.typeOfLesson.setText(subjects.get(position).typeOfLesson);
-            if (Objects.equals(subjects.get(position).typeOfLesson, "лк")){
+            holder.typeOfLesson.setText(subjects.get(position).type);
+            if (Objects.equals(subjects.get(position).type, "лк")){
                 holder.view_cell_lesson_layout.findViewById(R.id.lectionPracticeText).setBackgroundResource(R.drawable.lecture_background);
             }
             else {
