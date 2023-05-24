@@ -47,25 +47,17 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
         for (Group group : allGroups.displayedGroupsList){
             displayedGroups.add(group.name);
         }
-        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, chooseGroup, deleteGroup, "");
+        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, chooseGroup, deleteGroup);
         groupRecyclerView.setAdapter(groupAdapter);
     }
     private ChooseGroup chooseGroup = new ChooseGroup() {
         @Override
         public void chooseGroup(String chosenGroup) {
-            for (Group group : allGroupsList){
+            for (Group group : allGroups.displayedGroupsList){
                 if (group.name.contains(chosenGroup)){
                     allGroups.chosenGroup = group;
-                    //break;
+                    break;
                 }
-            }
-        }
-    };
-    private IfGroupChosen ifGroupChosen = new IfGroupChosen() {
-        @Override
-        public void ifGroupChosen(String nameOfGroup) {
-            if (allGroups.chosenGroup.name.contains(nameOfGroup)){
-
             }
         }
     };
@@ -73,9 +65,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
     public interface ChooseGroup{
         void chooseGroup(String chosenGroup);
     }
-    public interface IfGroupChosen{
-        void ifGroupChosen(String nameOfGroup);
-    }
+
     public interface DeleteGroup{
         void deleteGroup(String deletedGroup);
     }

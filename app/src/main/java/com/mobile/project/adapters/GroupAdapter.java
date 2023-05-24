@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mobile.project.AllGroups;
 import com.mobile.project.R;
 import com.mobile.project.activities.ControllingActivity;
 import com.mobile.project.holders.GroupViewHolder;
@@ -22,15 +23,14 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     private View pos_cell;
     private ControllingActivity.ChooseGroup chooseGroup;
     private ControllingActivity.DeleteGroup deleteGroup;
-    private String chosenGroup;
+    private String chosenGroup = AllGroups.getInstance().chosenGroup.name;
 
-    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, ControllingActivity.ChooseGroup chooseGroup, ControllingActivity.DeleteGroup deleteGroup, String chosenGroup) {
+    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, ControllingActivity.ChooseGroup chooseGroup, ControllingActivity.DeleteGroup deleteGroup) {
         this.displayedGroups = displayedGroups;
         inflater = LayoutInflater.from(context);
         this.onItemGroupListener = onItemGroupListener;
         this.chooseGroup = chooseGroup;
         this.deleteGroup = deleteGroup;
-        this.chosenGroup = chosenGroup;
     }
 
     @NonNull
