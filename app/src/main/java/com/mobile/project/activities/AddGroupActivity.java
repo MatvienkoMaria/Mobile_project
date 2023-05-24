@@ -57,13 +57,19 @@ public class AddGroupActivity extends AppCompatActivity {
         onBackPressed();
     }
     public void addGroup(View view) {
+        String message = "Группа " + chosenItemText + " добавлена.";
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         for (Group group: allGroupsList){
             if (group.name.equals(chosenItemText) && !allGroups.displayedGroupsList.contains(group)){
                 allGroups.displayedGroupsList.add(group);
             }
         }
-        String message = "Группа " + chosenItemText + " добавлена.";
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        for (Group group: allGroups.displayedGroupsList){
+            if (group.name.equals(chosenItemText)){
+                allGroups.chosenGroup = group;
+                break;
+            }
+        }
         finish();
     }
 }

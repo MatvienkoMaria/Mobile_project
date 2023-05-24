@@ -29,7 +29,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:src="@drawable/check"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/trashGroup"
         app:layout_constraintTop_toTopOf="parent" />

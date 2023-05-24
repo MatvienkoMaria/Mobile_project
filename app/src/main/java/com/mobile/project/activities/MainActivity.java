@@ -147,16 +147,16 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
         }
         Group chosenGroup = AllGroups.getInstance().chosenGroup;
         List<Subject> subjects = new ArrayList<>();
-        for (Subject subject: chosenGroup.subjects){
-            if (subject.daysMonth.contains(dayMonth)){
-                subjects.add(subject);
+        if (chosenGroup != null){
+            for (Subject subject: chosenGroup.subjects){
+                if (subject.daysMonth.contains(dayMonth)){
+                    subjects.add(subject);
+                }
             }
+            LessonAdapter lessonAdapter = new LessonAdapter(subjects, this);
+            lessonsRecyclerview.setAdapter(lessonAdapter);
         }
-        //List<Subject> subjects = new ArrayList<>();
-        //subjects.add(new Subject("Какой-то предмет 1","Биба Б.Б.","10:30","11:50","24.05","лк",null));
-        //subjects.add(new Subject("Какой-то предмет 2","Бoба Б.Б.","12:40","14:00","24.05","пр",null));
-        LessonAdapter lessonAdapter = new LessonAdapter(subjects, this);
-        lessonsRecyclerview.setAdapter(lessonAdapter);
+
     }
 
     public void toControllingAction(View view) {

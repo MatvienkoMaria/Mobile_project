@@ -1,6 +1,5 @@
 package com.mobile.project.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import com.mobile.project.activities.ControllingActivity;
 import com.mobile.project.holders.GroupViewHolder;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     private final List<String> displayedGroups;
@@ -22,13 +22,15 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     private View pos_cell;
     private ControllingActivity.ChooseGroup chooseGroup;
     private ControllingActivity.DeleteGroup deleteGroup;
+    private String chosenGroup;
 
-    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, ControllingActivity.ChooseGroup chooseGroup, ControllingActivity.DeleteGroup deleteGroup) {
+    public GroupAdapter(List<String> displayedGroups, Context context, OnItemGroupListener onItemGroupListener, ControllingActivity.ChooseGroup chooseGroup, ControllingActivity.DeleteGroup deleteGroup, String chosenGroup) {
         this.displayedGroups = displayedGroups;
         inflater = LayoutInflater.from(context);
         this.onItemGroupListener = onItemGroupListener;
         this.chooseGroup = chooseGroup;
         this.deleteGroup = deleteGroup;
+        this.chosenGroup = chosenGroup;
     }
 
     @NonNull
@@ -42,7 +44,9 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
     public void onBindViewHolder(@NonNull GroupViewHolder holder, int position) {
         if (!displayedGroups.isEmpty()) {
             holder.groupName.setText(displayedGroups.get(position));
-            visibilityOfCheckChosenGroup(holder);
+            if (Objects.equals(displayedGroups.get(position), chosenGroup)) {
+                holder.view_cell_group_layout.findViewById(R.id.checkGroup).setVisibility(View.INVISIBLE);;
+            }
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
