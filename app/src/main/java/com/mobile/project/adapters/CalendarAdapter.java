@@ -37,7 +37,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = (int) (parent.getHeight() * 0.16666666);
-        return new CalendarViewHolder(view, onItemListener);
+        return new CalendarViewHolder(view);
     }
 
     @Override
@@ -58,29 +58,33 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
                 pos_cell = holder.view_cell_layout;
             }
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (pos_cell != null) {
-                    pos_cell.setBackgroundResource(R.color.null_color);
-                }
-                holder.view_cell_layout.setBackgroundResource(R.drawable.chosen_cell_ring);
-                pos_cell = holder.view_cell_layout;
-            }
-        });
         if ((holder.getAdapterPosition() < 7) && (Integer.parseInt(holder.dayOfMonth.getText().toString()) > 8)){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     changeMonthByCell.changeMonthByCell(0, Integer.parseInt(holder.dayOfMonth.getText().toString()));
+                    onItemListener.onItemClick(holder.dayOfMonth.getText().toString());
                 }
             });
-        }
-        if ((holder.getAdapterPosition() > 27) && (Integer.parseInt(holder.dayOfMonth.getText().toString()) <= 14)){
+        } else if ((holder.getAdapterPosition() > 27) && (Integer.parseInt(holder.dayOfMonth.getText().toString()) <= 14)){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     changeMonthByCell.changeMonthByCell(1, Integer.parseInt(holder.dayOfMonth.getText().toString()));
+                    onItemListener.onItemClick(holder.dayOfMonth.getText().toString());
+                }
+            });
+        }
+        else {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (pos_cell != null) {
+                        pos_cell.setBackgroundResource(R.color.null_color);
+                    }
+                    holder.view_cell_layout.setBackgroundResource(R.drawable.chosen_cell_ring);
+                    pos_cell = holder.view_cell_layout;
+                    onItemListener.onItemClick(holder.dayOfMonth.getText().toString());
                 }
             });
         }
@@ -92,6 +96,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     }
 
     public interface OnItemListener{
-        void onItemClick(int position, String dayText);
+        void onItemClick(String dayText);
     }
 }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.mobile.project.R;
 import com.mobile.project.adapters.CalendarAdapter;
 import com.mobile.project.adapters.LessonAdapter;
+import com.mobile.project.pojo.Subject;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -58,25 +59,6 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     private void setMonthView(int day_cell)
     {
-        // надо будет переработать для нажатия на день, это чисто проверка отображения предметов
-        List<String> lessons = new ArrayList<>();
-        lessons.add("Какой-то предмет 1");
-        lessons.add("Какой-то предмет 2");
-        List<String> teachers = new ArrayList<>();
-        teachers.add("Биба Б.Б.");
-        teachers.add("Боба Б.Б.");
-        List<String> timeStart = new ArrayList<>();
-        timeStart.add("10:30");
-        timeStart.add("12:40");
-        List<String> timeEnd = new ArrayList<>();
-        timeEnd.add("11:50");
-        timeEnd.add("14:00");
-        List<String> typeLesson = new ArrayList<>();
-        typeLesson.add("лк");
-        typeLesson.add("пр");
-        LessonAdapter lessonAdapter = new LessonAdapter(lessons, teachers, timeStart, timeEnd,typeLesson,this);
-        lessonsRecyclerview.setAdapter(lessonAdapter);
-        // это календарик и месяц, не трогать
         monthYearText.setText(monthYearFromDate(selectedDate));
         ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this, this, changeMonthByCell, day_cell);
@@ -142,13 +124,29 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
     }
 
     @Override
-    public void onItemClick(int position, String dayText)
+    public void onItemClick(String dayText)
     {
-        if(!dayText.equals(""))
-        {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        //if(!dayText.equals(""))
+        //{
+        //    String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
+        //    Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        //}
+        // надо будет переработать для нажатия на день, это чисто проверка отображения предметов
+        String dayMonth;
+        if (dayText.length() == 1){
+            dayText = "0"+dayText;
         }
+        if (String.valueOf(selectedDate.getMonthValue()).length() == 1){
+            dayMonth = dayText+".0"+String.valueOf(selectedDate.getMonthValue());
+        }
+        else {
+            dayMonth = dayText+"."+String.valueOf(selectedDate.getMonthValue());
+        }
+        List<Subject> subjects = new ArrayList<>();
+        subjects.add(new Subject("Какой-то предмет 1","Биба Б.Б.","10:30","11:50","24.05","лк",null));
+        subjects.add(new Subject("Какой-то предмет 2","Бoба Б.Б.","12:40","14:00","24.05","пр",null));
+        LessonAdapter lessonAdapter = new LessonAdapter(subjects, this);
+        lessonsRecyclerview.setAdapter(lessonAdapter);
     }
 
     public void toControllingAction(View view) {
