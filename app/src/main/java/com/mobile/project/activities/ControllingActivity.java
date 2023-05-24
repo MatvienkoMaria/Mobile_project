@@ -18,6 +18,14 @@ import java.util.List;
 public class ControllingActivity extends AppCompatActivity implements GroupAdapter.OnItemGroupListener{
     private RecyclerView groupRecyclerView;
     private AllGroups allGroups =  AllGroups.getInstance();
+    private final DeleteGroup deleteGroup = new DeleteGroup() {
+        @Override
+        public void deleteGroup(String chosenGroup) {
+            groupRecyclerView.findViewById(R.id.group_cell_view).setVisibility(View.GONE);
+            String group = groupRecyclerView.findViewById(R.id.group_cell_view).findViewById(R.id.cellGroupText).toString();
+            allGroups.displayedGroupsList.remove(group);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
     }
     private void setGroupView(){
         List<String> displayedGroups = new ArrayList<>(allGroups.displayedGroupsList);
-        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, chooseGroup);
+        GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, chooseGroup, deleteGroup);
         groupRecyclerView.setAdapter(groupAdapter);
     }
     private ChooseGroup chooseGroup = new ChooseGroup() {
@@ -44,6 +52,9 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
 
     public interface ChooseGroup{
         void chooseGroup(String chosenGroup);
+    }
+    public interface DeleteGroup{
+        void deleteGroup(String chosenGroup);
     }
 
     public void toSettingsAction(View view) {
