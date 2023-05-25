@@ -25,7 +25,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
         public void deleteGroup(String deletedGroup) {
             for (int i = 0; i < allGroups.displayedGroupsList.size(); i++){
                 if (allGroups.displayedGroupsList.get(i).name.equals(deletedGroup)){
-                    allGroups.displayedGroupsList.remove(i);
+                    allGroups.displayedGroupsList.remove(allGroups.displayedGroupsList.get(i));
                 }
             }
         }
