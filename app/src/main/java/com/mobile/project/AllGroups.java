@@ -29,47 +29,12 @@ public class AllGroups {
     private List<Group> groups;
 
     private AllGroups() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                update("https://2a30-212-16-19-2.ngrok-free.app");
-            }
-        }).start();
-        try {
-            Thread.sleep(1500);
+        Thread update = new Thread(() -> update("https://f161-212-16-19-2.ngrok-free.app"));
+        update.start();
+        try{
+            update.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-    }
-    private String getContent(String path) throws IOException {
-        BufferedReader reader=null;
-        InputStream stream = null;
-        HttpsURLConnection connection = null;
-        try {
-            URL url=new URL(path);
-            connection =(HttpsURLConnection)url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setReadTimeout(10000);
-            connection.connect();
-            stream = connection.getInputStream();
-            reader= new BufferedReader(new InputStreamReader(stream));
-            StringBuilder buf=new StringBuilder();
-            String line;
-            while ((line=reader.readLine()) != null) {
-                buf.append(line).append("\n");
-            }
-            return(buf.toString());
-        }
-        finally {
-            if (reader != null) {
-                reader.close();
-            }
-            if (stream != null) {
-                stream.close();
-            }
-            if (connection != null) {
-                connection.disconnect();
-            }
         }
     }
     private String getHTML(String urlToRead){
