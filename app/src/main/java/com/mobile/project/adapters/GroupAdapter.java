@@ -61,7 +61,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupViewHolder> {
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteGroup.deleteGroup(holder.groupName.toString());
+                deleteGroup.deleteGroup(holder.groupName.getText().toString());
                 displayedGroups.remove(holder.getAdapterPosition());
                 notifyDataSetChanged();
             }
