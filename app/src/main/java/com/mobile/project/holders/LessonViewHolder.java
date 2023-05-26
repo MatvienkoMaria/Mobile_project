@@ -15,6 +15,7 @@ public class LessonViewHolder extends RecyclerView.ViewHolder{
     public final TextView timeStart;
     public final TextView timeEnd;
     public final TextView typeOfLesson;
+    public final TextView roomNum;
     public final View view_cell_lesson_layout;
 
     public LessonViewHolder(@NonNull View itemView) {
@@ -25,5 +26,6 @@ public class LessonViewHolder extends RecyclerView.ViewHolder{
         timeEnd = itemView.findViewById(R.id.timeEnd);
         typeOfLesson = itemView.findViewById(R.id.lectionPracticeText);
         view_cell_lesson_layout = itemView.findViewById(R.id.lesson_cell_view);
+        roomNum = itemView.findViewById(R.id.roomText);
     }
 }

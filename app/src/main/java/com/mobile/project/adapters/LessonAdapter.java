@@ -36,6 +36,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonViewHolder> {
         if (!subjects.isEmpty()){
             holder.lessonName.setText(subjects.get(position).name);
             holder.teacherName.setText(subjects.get(position).teacher);
+            holder.roomNum.setText(subjects.get(position).room);
             holder.timeStart.setText(subjects.get(position).timeStart);
             holder.timeEnd.setText(subjects.get(position).timeEnd);
             holder.typeOfLesson.setText(subjects.get(position).type);
