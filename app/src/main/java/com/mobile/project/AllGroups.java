@@ -13,6 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -76,6 +77,7 @@ public class AllGroups {
                     }
                 }
             }
+            toDelete.sort(Comparator.reverseOrder());
             for(Integer index:toDelete){
                 orig.get(i).subjects.remove((int)index);
             }
