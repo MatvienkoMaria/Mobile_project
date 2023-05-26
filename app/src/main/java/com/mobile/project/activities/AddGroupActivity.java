@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.mobile.project.AllGroups;
 import com.mobile.project.R;
+import com.mobile.project.adapters.SpinnerAdapter;
 import com.mobile.project.pojo.Group;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class AddGroupActivity extends AppCompatActivity {
             namesOfGroups.add(group.name);
         }
         //Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, namesOfGroups);
+        SpinnerAdapter adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, namesOfGroups);
         //Определяем разметку для использования при выборе элемента
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Применяем адаптер к элементу spinner
