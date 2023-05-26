@@ -1,15 +1,23 @@
 package com.mobile.project;
 
+import android.content.Context;
+import android.os.Environment;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mobile.project.pojo.Group;
 import com.mobile.project.pojo.Subject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -38,24 +46,20 @@ public class AllGroups {
             e.printStackTrace();
         }
     }
-    private String getHTML(String urlToRead){
+    private String getHTML(String urlToRead) throws Exception {
         StringBuilder result = new StringBuilder();
-        try{
-            URL url = new URL(urlToRead);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(10000);
-            conn.setRequestMethod("GET");
-            try (BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_16))) {
-                for (String line; (line = reader.readLine()) != null; ) {
-                    result.append(line);
-                }
+        URL url = new URL(urlToRead);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setReadTimeout(10000);
+        conn.setRequestMethod("GET");
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_16))) {
+            for (String line; (line = reader.readLine()) != null; ) {
+                result.append(line);
             }
-
-        } catch (IOException e) {
-            log.warning("error in getHtml");
-            e.printStackTrace();
         }
+
+
 
         return result.toString();
     }
@@ -117,8 +121,13 @@ public class AllGroups {
         }
     }
     public void update(String url){
-        String jsonText = getHTML(url);
-        System.out.println(jsonText);
+        String jsonText;
+        try{
+            jsonText = getHTML(url);
+            saveJson(jsonText);
+        } catch (Exception e) {
+            jsonText = readJson();
+        }
         groups = new Gson().fromJson(jsonText,new TypeToken<List<Group>>(){}.getType());
         System.out.println(groups);
         for(Group group : groups){
@@ -129,5 +138,34 @@ public class AllGroups {
     }
     public List<Group> getGroups(){
         return groups;
+    }
+    private void saveJson(String json){
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),"json.txt");
+        try {
+            FileOutputStream stream = new FileOutputStream(file);
+            stream.write(json.getBytes());
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private String readJson(){
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),"json.txt");
+        StringBuilder content = new StringBuilder();
+
+        try(FileReader reader = new FileReader(file))
+        {
+
+            int nextChar;
+            while ((nextChar = reader.read()) != -1) {
+                content.append((char) nextChar);
+            }
+
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+        return String.valueOf(content);
     }
 }
