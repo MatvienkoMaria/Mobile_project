@@ -81,6 +81,7 @@ public class AllGroups {
             for(Integer index:toDelete){
                 orig.get(i).subjects.remove((int)index);
             }
+
         }
     }
     private void subjectParse(List<Group> orig){
@@ -112,6 +113,7 @@ public class AllGroups {
                 subject.timeStart = splittedTime[0];
                 subject.timeEnd = splittedTime[splittedTime.length - 1];
             }
+
         }
     }
     public void update(String url){

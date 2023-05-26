@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
@@ -154,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
                     subjects.add(subject);
                 }
             }
+            subjects.sort(Comparator.comparing(s -> s.timeStart));
             LessonAdapter lessonAdapter = new LessonAdapter(subjects, this);
             lessonsRecyclerview.setAdapter(lessonAdapter);
         }
