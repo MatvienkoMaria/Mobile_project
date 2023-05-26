@@ -1,6 +1,7 @@
 package com.mobile.project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;

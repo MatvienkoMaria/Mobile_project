@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="bottom"
     tools:context=".activities.ControllingActivity"
-    android:background="@color/purple_backgroundForControlling">
+    android:background="@color/purple_background">
 
     <LinearLayout
         android:layout_width="match_parent"

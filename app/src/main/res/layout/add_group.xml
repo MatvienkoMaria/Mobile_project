@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="bottom"
     tools:context=".activities.AddGroupActivity"
-    android:background="@color/purple_backgroundForControlling">
+    android:background="@color/purple_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:dropDownVerticalOffset="45dp"
                 android:dropDownWidth="160dp"
-                android:popupBackground="@color/purple_backgroundForControlling"/>
+                android:popupBackground="@color/purple_background"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

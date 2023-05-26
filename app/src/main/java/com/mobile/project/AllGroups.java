@@ -29,7 +29,7 @@ public class AllGroups {
     private List<Group> groups;
 
     private AllGroups() {
-        Thread update = new Thread(() -> update("https://f161-212-16-19-2.ngrok-free.app"));
+        Thread update = new Thread(() -> update("https://3fff-212-16-19-2.ngrok-free.app"));
         update.start();
         try{
             update.join();
