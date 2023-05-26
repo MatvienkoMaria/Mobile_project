@@ -45,7 +45,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
     }
     private void setGroupView(){
         List<String> displayedGroups = new ArrayList<>();
-        for (Group group : allGroups.displayedGroupsList){
+         for (Group group : allGroups.displayedGroupsList){
             displayedGroups.add(group.name);
         }
         GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, chooseGroup, deleteGroup);

@@ -2,6 +2,7 @@ package com.mobile.project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,5 +17,11 @@ public class SettingsActivity extends AppCompatActivity {
     }
     public void backToCalendarFromSettings(View view) {
         onBackPressed();
+    }
+
+    public void toAboutApp(View view) {
+        Intent intent = new Intent(this, AboutAppActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
