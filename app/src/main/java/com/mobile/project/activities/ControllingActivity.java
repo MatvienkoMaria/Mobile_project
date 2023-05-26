@@ -15,6 +15,7 @@ import com.mobile.project.pojo.Group;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ControllingActivity extends AppCompatActivity implements GroupAdapter.OnItemGroupListener{
     private RecyclerView groupRecyclerView;
@@ -24,7 +25,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
         @Override
         public void deleteGroup(String deletedGroup) {
             for (int i = 0; i < allGroups.displayedGroupsList.size(); i++){
-                if (allGroups.displayedGroupsList.get(i).name.equals(deletedGroup)){
+                if (Objects.equals(allGroups.displayedGroupsList.get(i).name, deletedGroup)){
                     allGroups.displayedGroupsList.remove(allGroups.displayedGroupsList.get(i));
                 }
             }
@@ -44,7 +45,7 @@ public class ControllingActivity extends AppCompatActivity implements GroupAdapt
     }
     private void setGroupView(){
         List<String> displayedGroups = new ArrayList<>();
-        for (Group group : allGroups.displayedGroupsList){
+         for (Group group : allGroups.displayedGroupsList){
             displayedGroups.add(group.name);
         }
         GroupAdapter groupAdapter = new GroupAdapter(displayedGroups, this, this, chooseGroup, deleteGroup);
